@@ -6,8 +6,6 @@ export const locals = {
     English: "en_US",
     Русский: "ru_RU",
     Latviešu: "lv",
-    French: "fr_FR",
-    German: "de_DE",
 }
 
 export function __(n, defaultN = false) {
