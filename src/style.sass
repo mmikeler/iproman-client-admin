@@ -1,0 +1,856 @@
+$black: #3B3A40
+$orange: #ff8005
+$green: #01C158
+
+*
+    box-sizing: border-box
+
+img
+    max-width: 100%
+
+body
+    padding: 0
+    margin: 0
+    color: #313747
+
+#root
+    background-color: #d3d6e0
+    min-height: 100vh
+    padding-bottom: 50px
+    position: fixed
+    width: 100%
+    height: 100%
+    left: 0
+    top: 0
+    z-index: 9999
+    overflow: auto
+
+.notice
+    border: 0
+    font-size: 16px
+    font-family: 'Regular'
+
+.container
+    max-width: 1140px
+    margin: auto
+    padding: 0 15px
+
+.topbar
+    background-color: #302F32
+    padding: 0 15px
+    color: #fff
+    .container
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+        justify-content: space-between
+    .logo
+        padding: 15px 15px 15px 0
+        width: 100px
+        border-right: 1px solid #464547
+    .info
+        display: flex
+        flex-direction: column
+        padding: 15px
+    .full-version
+        font-family: Bold
+        color: #fff
+    .nav
+        &>div
+            color: #fff
+            text-decoration: none
+            padding: 5px
+            margin: 5px
+            cursor: pointer
+            &[current='1']
+                border-bottom: 1px solid $green
+            &:hover
+                border-bottom: 1px solid $green
+    .user
+        display: flex
+        align-items: center
+    .user__avatar
+        width: 51px
+        height: 51px
+        border-radius: 50%
+        margin-right: 10px
+        overflow: hidden
+        background: url('./img/avatar.jpg') no-repeat center / contain
+    .user__info
+        b
+            font-size: 16px
+            font-family: Bold
+        span
+            font-size: 14px
+
+.page-header
+    display: flex
+    margin-bottom: 20px
+
+.lang-switcher
+    margin-left: auto
+
+.page-lang-tabs
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    .lang-tab
+        display: flex
+        align-items: center
+        margin: 5px
+        padding: 10px
+        background-color: $black
+        border-radius: 8px
+        color: #fff
+        cursor: pointer
+        &[current="1"]
+            background-color: $orange
+            border-radius: 8px 8px 0 0
+    .lang-tab__label
+        margin: 0 10px
+
+.top-bar-mess-wrapper,
+.top-bar-mess-wrapper--alt
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    background-color: #FFA412
+    margin-right: -15px
+    margin-left: -15px
+    font-size: 16px
+    font-family: Bold
+    p
+        margin: 20px
+    a
+        background-color: #fff
+        color: #333
+        padding: 10px 20px
+        text-decoration: none
+        border-radius: 10px
+        &:hover
+            box-shadow: 1px 1px 5px #333
+
+.top-bar-mess-wrapper
+    &.mess-info
+        background-color: #ff8005
+
+.top-bar-mess-wrapper--alt
+    background-color: #01C158
+
+.logout-link
+    color: #fff
+    font-size: 0.9rem
+    font-family: Bold
+    text-decoration: underline
+
+.main-nav
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: #302F32
+    border-top: 1px solid #464547
+    &__item
+        color: #fff
+        margin: 15px
+        border-bottom: 1px solid #302F32
+        transition: all 0.3s
+        cursor: pointer
+        font-family: Bold
+        &:hover
+            border-bottom: 1px solid #01C158
+        &.vip-item
+            color: #ff8005
+        &[current="1"]
+            border-bottom: 1px solid #01C158
+    &.fixed
+        position: fixed
+        top: 0
+        left: 0
+        z-index: 99
+        width: 100%
+
+.nav-delimeter
+    width: 2px
+    background-color: #464547
+    align-self: stretch
+
+.section
+    background-color: #E1E3E7
+    border-radius: 8px
+    margin: 24px 0
+    width: 100%
+    .section
+        background-color: #F3F5F8
+        margin: 12px 0
+        .section__header
+            background-color: #585858
+            font-size: 18px
+            cursor: pointer
+    &__header
+        background-color: $black
+        padding: 15px 20px
+        color: #fff
+        font-weight: 700
+        font-size: 20px
+        font-family: Bold
+        border-radius: 8px 8px 0 0
+        display: flex
+        align-items: center
+        cursor: pointer
+        position: relative
+        .editable-section-title
+            display: flex
+            flex-wrap: wrap
+            align-items: center
+        input
+            color: #fff
+            font-weight: 700
+            font-size: 20px
+            font-family: Bold
+            border: 0
+            background-color: transparent
+            margin-left: 5px
+            height: 30px
+            border-bottom: 1px solid #555
+            &:focus
+                width: calc(100% - 30px)
+        svg
+            color: #ff8005
+        .section-title-notice
+            font-size: 12px
+            padding-left: 20px
+            bottom: 3px
+            font-weight: 300
+            font-family: sans-serif
+            opacity: 0.7
+            margin-top: 5px
+            color: #fff
+        .icon
+            margin-right: 15px
+        .collaps-icon
+            cursor: pointer
+            opacity: 0.7
+            transition: all .3s
+            &:hover
+                opacity: 1
+    &__body
+        padding: 24px
+        display: flex
+        flex-wrap: wrap
+        position: relative
+    &.closed
+        .section__header
+            border-radius: 8px
+        .section__body
+            height: 0
+            overflow: hidden
+            padding: 0
+        .collaps-icon
+            transform: rotateX(180deg)
+        [type=file]
+            display: none
+    &__footer
+        padding: 15px
+        display: flex
+        .collapse-icon
+            font-size: 2rem
+            margin: auto
+            cursor: pointer
+            position: relative
+            z-index: 4
+
+.offcanvas-body
+    .field
+        min-height: 60px
+        margin-bottom: 1rem
+    .upload-btn
+        background-color: #efefef
+        color: #333
+        border: 2px solid #ddd
+        width: 100%
+        margin: 0
+
+.media-collection
+    display: flex
+    flex-wrap: wrap
+    max-width: 320px
+    margin: auto
+    .placeholder
+        width: 100%
+        padding-top: 100%
+    .placeholder-glow
+        margin: 5px
+        width: 150px
+        height: 150px
+        &.uploaded
+            opacity: 0.8
+            border: 1px solid #ddd
+            background-repeat: no-repeat
+            background-position: center
+            background-size: contain
+            cursor: pointer
+            transition: all 0.3s
+            &:hover
+                opacity: 1
+
+.section-valid-icon
+    width: 51px
+
+.get-vip-mess
+    display: flex
+    margin-right: 20px
+    i
+        margin-right: 10px
+    span
+        font-size: 10px
+        display: block
+        min-width: 90px
+
+.level-border-wrapper
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: #fff
+    opacity: 0.5
+    z-index: 3
+
+.field
+    margin-bottom: 22px
+    display: block
+    position: relative
+    .header
+        display: flex
+        margin-bottom: 10px
+        font-weight: 500
+        align-items: flex-end
+        .length
+            margin-left: auto
+            display: flex
+            align-items: baseline
+            img
+                margin-left: 10px
+            .field-value-range
+                color: #aaa
+                font-size: 0.6rem
+                margin-right: 15px
+    .input
+        padding: 17px 20px
+        font-size: 15px
+        border: 0
+        border-radius: 8px
+        box-sizing: border-box
+        width: 100%
+        max-width: 100%
+
+input.input:disabled
+    border: 1px solid #ccc
+
+.checkbox
+    width: 21px
+    height: 21px
+    position: relative
+    cursor: pointer
+    &:checked
+        background-color: #fff
+        &:after
+            content: ''
+            display: block
+            width: 100%
+            height: 100%
+            left: 0
+            top: 0
+            background: #fff url('./img/check-icon.png') no-repeat center / 90%
+
+label[disabled]
+    opacity: 0.5
+
+.company-logo
+    margin-left: auto
+
+.logo-wrapper
+    border-radius: 8px
+    background-color: #fff
+    position: relative
+    &:after
+        content: ''
+        padding-top: 100%
+        display: block
+    .ff-notice
+        position: absolute
+        width: 100%
+        height: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+        text-align: center
+        font-size: 15px
+    video
+        position: absolute
+        top: 0
+        left: 0
+    &.video:after
+        content: none
+
+.btn, .upload-btn
+    width: 190px
+    max-width: 100%
+    padding: 15px
+    border-radius: 8px
+    text-align: center
+    color: #333
+    font-family: Bold
+    margin-top: 12px
+    cursor: pointer
+    background-color: #fff
+    transition: all 0.3s
+    &:hover
+        background-color: #f3f3f3
+
+.btn.btn-with-icon
+    width: fit-content
+    .bi
+        margin: auto
+        font-size: 20px
+    &.green
+        background-color: $green
+        color: #fff
+        border-color: #039746
+        &:hover
+            background-color: #039746
+
+.page-lang-tabs
+    .btn
+        height: 45px
+        width: 45px
+        padding: 0px
+        margin: 5px
+        display: flex
+
+.upload-btn
+    position: absolute
+    color: #fff
+    background-color: #01C158
+    &:hover
+        background-color: #049947
+
+input[type="file"]
+    opacity: 0
+    width: 1px
+
+.add
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    margin-bottom: 24px
+    &>div
+        cursor: pointer
+    img
+        margin-right: 15px
+
+.remove
+    margin: auto
+    cursor: pointer
+    transform: rotate(45deg)
+
+//================== Optional input
+.optional-input
+    display: flex
+    margin: 15px 0
+    .social-icon
+        filter: grayscale(0)
+        transition: all 1s
+    &[disabled]
+        .social-icon
+            filter: grayscale(1)
+.oi__left
+    margin-right: 15px
+    display: flex
+    flex-direction: column
+    align-items: center
+    .switch
+        margin-top: 8px
+
+.oi__right
+    width: 100%
+
+.switch
+    position: relative
+    display: inline-block
+    width: 42px
+    height: 23px
+    input
+        display: none
+
+.slider
+    position: absolute
+    cursor: pointer
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: #ccc
+    -webkit-transition: .4s
+    transition: .4s
+
+.slider:before
+    position: absolute
+    content: ""
+    height: 19px
+    width: 19px
+    left: 2px
+    bottom: 2px
+    background-color: white
+    -webkit-transition: .4s
+    transition: .4s
+
+input:checked + .slider
+    background-color: #78DC4B
+
+input:focus + .slider
+    box-shadow: 0 0 1px #78DC4B
+
+input:checked + .slider:before
+    -webkit-transform: translateX(19px)
+    -ms-transform: translateX(19px)
+    transform: translateX(19px)
+
+/* Rounded sliders */
+.slider.round
+    border-radius: 34px
+
+.slider.round:before
+    border-radius: 50%
+
+.remove
+    width: 45px
+    height: 45px
+    background-position: center
+    background-repeat: no-repeat
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iMTEiIHZpZXdCb3g9IjAgMCAxMSAxMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQuMTEzMDQgNi43NjczOUgwVjQuMjMyNjFINC4xMTMwNFYwSDYuODg2OTZWNC4yMzI2MUgxMVY2Ljc2NzM5SDYuODg2OTZWMTFINC4xMTMwNFY2Ljc2NzM5WiIgZmlsbD0iIzc3Nzc3NyIvPgo8L3N2Zz4K')
+
+//======================= Social icons
+.social-icon
+    width: 53px
+    height: 53px
+    border-radius: 50%
+    background: #ccc
+    &.vk
+        background: #6695BD url(./img/vk.svg) no-repeat center / contain
+    &.fb
+        background: #3B5998 url(./img/fb.svg) no-repeat center / contain
+    &.inst
+        background: #6F6F6F url(./img/Instagram.svg) no-repeat center / contain
+    &.whatsapp
+        background: #65BC54 url(./img/WhatsApp.svg) no-repeat center / contain
+    &.viber
+        background: #7B519D url(./img/Viber.svg) no-repeat center / contain
+    &.telegram
+        background: #2AA1DA url(./img/Telegram.svg) no-repeat center / contain
+
+.s1__2
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    margin-top: 20px
+
+.delimeter, .delimeter-alt
+    border-top: 1px solid #D3D6E0
+    width: calc(100% + 50px)
+    margin-left: -25px
+    margin-right: -25px
+    margin-bottom: 20px
+    margin-top: 20px
+
+.delimeter-alt
+    border-top: 3px dotted #000
+    width: 95%
+    margin: 20px auto
+
+// ============================ NOTICE
+.notice
+    width: 100%
+    padding: 15px 30px
+    color: #fff
+    background: #6fc0f7
+    border-radius: 8px
+    margin: 20px 0
+    font-family: Bold
+    text-align: center
+
+//============================= BADGE
+.badge
+    border-radius: 5px
+    padding: 5px
+    background-color: $black
+    font-size: 12px
+    font-family: bold
+    color: #fff
+    width: fit-content
+    &.option
+        cursor: pointer
+
+.footer
+    .btn,.upload-btn
+        position: relative
+        margin: 10px
+
+.remove-file
+    position: absolute
+    top: -10px
+    right: -10px
+    z-index: 1
+    margin-left: auto
+    cursor: pointer
+    border: 2px solid transparent
+    transition: all 0.3s
+    &:hover
+        border: 2px solid $green
+
+.bottom-bar
+    position: fixed
+    bottom: 0
+    left: 0
+    right: 0
+    height: 25px
+    background-color: #302f32
+    color: #fff
+    display: flex
+    align-items: center
+    font-size: 0.8rem
+    padding: 0 15px
+    justify-content: flex-end
+    z-index: 5
+
+.ff-wrapper
+    display: flex
+    flex-direction: column
+
+//============================= CATALOG ITEM
+.catalog-item
+    padding: 15px
+    width: 100%
+    position: relative
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    border-bottom: 1px solid #ccc
+    background-color: #f3f3f3
+    &.collaps
+        background-color: transparent
+        .catalog-item__body
+            display: none
+    &:hover
+        background-color: #f3f3f3
+    &::before
+        content: attr(num)
+        // border: 2px solid
+        // background-color: #fff
+        width: 30px
+        height: 30px
+        display: flex
+        align-items: center
+        justify-content: center
+        font-size: 18px
+        font-weight: bold
+        border-radius: 50%
+    input[type=file]
+        position: absolute
+        top: 10%
+    .gallery
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+        .ff-wrapper
+            position: relative
+            width: 18%
+            min-width: 100px
+            margin: 0 1%
+            .badge
+                top: -10px
+                right: -10px
+        .logo-wrapper
+            min-height: 100px
+            position: relative
+    &__header
+        display: flex
+        align-items: center
+        padding-left: 40px
+    .product-name
+        font-size: 1.2rem
+        min-width: 200px
+
+.collapse-toogle__up,
+.collapse-toogle__down,
+.catalog-item__close-btn
+    display: none
+    cursor: pointer
+    margin: 0 15px
+    transition: all 0.3s
+    &:hover
+        color: #01C158
+
+.catalog-item__close-btn
+    display: block
+
+.catalog-item.collaps
+    .collapse-toogle__up
+        display: none
+    .collapse-toogle__down
+        display: block
+
+.catalog-item
+    .collapse-toogle__up
+        display: block
+    .collapse-toogle__down
+        display: none
+
+.popup-notice
+    &__icon
+        border-radius: 50%
+        height: 30px
+        width: 30px
+        display: flex
+        align-items: center
+        justify-content: center
+        cursor: pointer
+        i
+            font-size: 1.2rem
+            color: $black
+            transition: all 0.3s
+        &:hover
+            i
+                color: $orange
+
+.lang-list
+    border-top: 1px solid #ddd
+    border-bottom: 1px solid #ddd
+    padding: 10px 0
+    .item
+        padding: 4px 10px
+        cursor: pointer
+        &:hover
+            background-color: #ddd!important
+        &:nth-child(odd)
+            background-color: #f3f3f3
+        span
+            width: 100px
+            display: inline-block
+        &[data-open="1"]
+            opacity: .3
+            cursor: initial
+
+.site-languages-list
+    margin-bottom: 30px
+    display: flex
+    flex-wrap: wrap
+    .item
+        width: 100%
+        padding: 5px 10px
+        display: flex
+        order: 2
+        &:nth-child(even)
+            background-color: #f3f3f3
+        &[order='1']
+            order: 1
+            color: $orange
+            margin-bottom: 5px
+            span
+                color: $black
+                font-size: 0.8rem
+    .options
+        margin-left: auto
+        display: flex
+        align-items: center
+        input
+            transform: none
+            cursor: pointer
+        .move-item
+            min-width: 65px
+            .bi
+                font-size: 1.3em
+                margin: 0 5px
+                color: #aaa
+                cursor: pointer
+                &:hover
+                    color: $green
+        .remove
+            height: 20px
+            width: 20px
+            margin-left: 20px
+
+.offcanvas-footer
+    .info
+        font-size: 0.9em
+        padding: 15px
+        background-color: yellow
+
+//============================= MEDIA
+@media (max-width: 540px)
+    .topbar
+        .container
+            .user
+                margin: 15px auto
+    .top-bar-mess-wrapper
+    .top-bar-mess-wrapper--alt
+        padding-bottom: 25px
+    .main-nav, .topbar .nav
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+
+.ml-a
+    margin-left: auto
+.m-a
+    margin-left: auto
+    margin-right: auto
+.mr10
+    margin-right: 10px
+.mb30
+    margin-bottom: 30px
+.mb50
+    margin-bottom: 50px
+.mt30
+    margin-top: 30px
+.ml20
+    margin-left: 20px
+.w100p
+    width: 100%
+
+.uploader
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: #555
+    color: #fff
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 8px
+    font-size: 20px
+
+.pointer
+    cursor: pointer
+
+.reset-link
+    text-decoration: none
+    &:hover
+        text-decoration: underline
+
+.page-in-progress
+    width: 100%
+    min-height: 600px
+    background: url('./img/page_in_progress.jpg') no-repeat center / contain
+    background-color: #fff
+    p
+        position: absolute
+        top: 15px
+        left: 15px
+        font-size: 2rem
+        font-family: Bold
+        color: #01C158

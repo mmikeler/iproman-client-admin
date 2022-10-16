@@ -1,0 +1,110 @@
+
+@font-face
+    font-family: Regular
+    src: url(../font/Ptrootui.woff)
+
+@font-face
+    font-family: Bold
+    src: url(../font/Ptrootuibold.woff)
+
+$green: #01C158
+.green
+    color: $green
+
+body,input,select,textarea
+    font-family: Regular
+
+.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10
+    padding: 0 10px
+    margin-left: -10px
+    margin-right: -10px
+.col-1
+    width: 10%
+.col-2
+    width: 20%
+.col-3
+    width: 30%
+.col-4
+    width: 40%
+.col-5
+    width: 50%
+.col-6
+    width: 60%
+.col-7
+    width: 70%
+.col-8
+    width: 80%
+.col-9
+    width: 90%
+.col-10
+    width: 100%
+
+@media (max-width: 540px)
+    .col-1,.col-2,.col-3,.col-4,.col-5,.col-6.col-7,.col-8,.col-9,.col-10
+        width: 100%
+
+.fs-16
+    font-size: 16px
+
+.fs-18
+    font-size: 18px
+
+.tac
+    text-align: center
+
+.w100p
+    width: 100%
+
+.w90p
+    width: 90%
+
+.bold
+    font-family: Bold
+
+.d-flex
+    display: flex
+    flex-wrap: wrap
+    &.flex-nowrap
+        flex-wrap: nowrap
+
+.j-center
+    justify-content: center
+
+.align-center
+    align-items: center
+
+.j-between
+    justify-content: space-between
+
+//======================= MARGINS
+.mt10
+    margin-top: 10px
+.mt20
+    margin-top: 20px
+.mr10
+    margin-right: 10px
+.mr20
+    margin-right: 20px
+.mb10
+    margin-bottom: 10px
+.mb20
+    margin-bottom: 20px
+.ml5
+    margin-left: 5px
+.ml10
+    margin-left: 10px
+
+//======================= PADDINGS
+.pr20
+    padding-right: 20px
+.pb20
+    padding-bottom: 20px
+
+//======================= FORMS
+.form-switch .form-check-input
+    width: 2.5rem
+.form-check-input
+    height: 1.5rem
+.form-check-input:checked
+    background-color: #01c158
+    border-color: #01c158
