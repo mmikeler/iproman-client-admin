@@ -1,70 +1,122 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Описание файлов и папок
 
-In the project directory, you can run:
+- `с` компоненты
+  - `inputs` поля формы
+    - `fields-options.jsx` объект с настройками полей форм и функции для их получения
+    - `file.jsx` компонент поля выбора файла
+    - `input.jsx` компоненты различных инпутов
+    - `uncontrol_form.jsx` неконтролируемые компоненты инпутов
+  - `catalog_page.jsx` компонент страницы каталога
+  - `catalog.jsx` компонент каталога
+  - `fetch.js` функции произвольных запросов и запросов к API сервера
+  - `get_reg_data_mess.jsx` компонент сообщений в шапке о переносе регистрационных данных
+  - `lang-switcher.jsx` компонент переключателя языков админки
+  - `lang.jsx` компонент предоставляющий локализованные данные
+  - `locale_direction.jsx` компонент настроек локализации
+  - `mail_page.jsx` компонент страницы почты
+  - `mydomen_page.jsx` компонент страницы домена
+  - `nav.jsx` компонент навигации
+  - `notice.jsx` компонент инлайновых сообщений
+  - `page-lang-tabs.jsx` компонент табов локализации админки
+  - `pages.jsx` компонент вывода страниц
+  - `password_page.jsx` компонент страницы смены пароля
+  - `popup_notice.jsx` компонент всплывающих сообщений
+  - `products.jsx` компонент продуктов
+  - `reducer.jsx` основной и единственный редьюсер
+  - `section-1.jsx` компонент секции
+  - `section-2.jsx` компонент секции
+  - `section-3.jsx` компонент секции
+  - `section-4.jsx` компонент секции
+  - `section-5.jsx` компонент секции
+  - `section-6.jsx` компонент секции
+  - `section-7.jsx` компонент секции
+  - `section.jsx` компонент оболочки секции
+  - `support_page.jsx` компонент страницы обращения в поддержку
+  - `topbar.jsx` компонент шапки
+- `css` файлы стилей
+  - `util.sass` вспомогательные стили
+- `font` файлы шрифтов
+- `img` изображения
+- `App.jsx` основной файл приложения
+- `App.css` основной файл стилей
 
-### `npm start`
+&nbsp;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Описание работы приложения
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. При инициализации приложения `state` должен получить объект `window.o` заданный инлайн скриптом в основном *html* или *php* файле.
+  ```javascript
+  window.o = {
+      v: "1.0.0", // версия приложения
+      ajaxUrl: 'https://domain-name.com/api.php', // адрес API
+      homeUrl: 'https://domain-name.com', // Собственный адрес сайта
+      admin_settings: { // можно задать настройки для использования(или нет) внутри приложения
+        min_title_value_length: 5, // минимальное кол-во символов для шортрида
+        min_longtext_value_length: 15, // минимальное кол-во символов для лонгрида
+      },
+      user: { // Данные авторизованного пользователя
+        data: {
+          ID: "2", // ID 1 должен занимать мастер-аккаунт
+          display_name: "username",
+          user_email: "admin_email@gmail.com",
+          user_login: "login",
+          user_nicename: "nicename",
+          user_pass: "$P$BRHvXQSJz8xothKuRr18IYB3Wvx7as/", // зашифрованный MD5 пароль
+          user_registered: "2021-12-15 17:34:11", // дата регистрации
+          user_status: "0",
+          user_url: "https://self-domain.com", // адрес текущего сайта
+        }
+      }
+    }
+  ```
+2. Далее совершается запрос к собственному API с ключом `init`. В ответ получаем объект всех полей из БД относящихся к настройкам и пользовательским данным приложения. Ответ разбирается в событии `reducer.init` и записывается в `state.form`.
 
-### `npm test`
+3. Запрос на изменение данных в БД отправляется событием `onblur` поля ввода данных за исключением поля с типом `file` и `uncontrol` форм, которые имеют свою логику.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. На отдельных страницах приложения, таких как "Управление почтой" используются `uncontrol` формы - формы, за которыми не следит `state` и отправляют данные через API на почту администратора.
 
-### `npm run build`
+&nbsp;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Отправка запросов к API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+За общение с API по-умолчанию отвечают две функции из файла `/c/fetch.js`.
+- `Fetch(key,value,[cb])`
+  - __Принимает:__ ключ (строка) и значение (строка) мета-поля, котрое нужно изменить. Опционально принимает функцию обратного вызова, в которую передаётся результат запроса;
+  - __Возвращает:__ объект ошибки в случае ошибки обновления поля либо результат работы вызванного API;
+- `_Fetch(action, [options], [cb])`
+  - __Принимает:__ название экшена (строка), который нужно выполнить. Опционально принимает несериализованный объект с произвольными данными и функцию обратного вызова, в которую передаётся результат запроса;
+  - __Возвращает:__ результат работы вызванного API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+&nbsp;
 
-### `npm run eject`
+# Добавление нового поля
+Инпуты различных типов могут использоваться самостоятельно без создания формы. За исключение `uncontrol` полей, которые имеют свою логику.
+В случае если какое-то свойство не указано, оно берётся из `fields_options.jsx` по ключу поля в БД
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- __INPUT__, __TEXTAREA__
+  Включает в себя готовое поле формы, с лэйблом и счётчиком символов.
+  ```javascript
+  <Field
+    key="string"        // Уникальный ключ React для списков
+    l="string"          // label поля
+    f="s1_3"            // ключ поля в БД
+    width="number"      // ширина поля в %
+    className="input"   // класс инпута
+    min="5"             // Минимальное кол-во символов
+    max="15"            // Максимальное кол-во символов
+    p="placeholder"     // Placeholder текст
+    disabled="disabled" // disabled property
+    type="type"         // text,number,textarea или другой тип инпута
+  />
+  ```
+- __CHECKBOX__
+  ```javascript
+  <CHECKBOX
+    key="string"        // Уникальный ключ React для списков
+    f="string"          // ключ поля в БД
+    nolocale="bool"     // нужно ли локализовать ключ БД
+    disabled="bool"
+  />
+  ```
