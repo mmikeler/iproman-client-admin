@@ -49,24 +49,24 @@
 1. При инициализации приложения `state` должен получить объект `window.o` заданный инлайн скриптом в основном *html* или *php* файле.
   ```javascript
   window.o = {
-      v: "1.0.0", // версия приложения
-      ajaxUrl: 'https://domain-name.com/api.php', // адрес API
-      homeUrl: 'https://domain-name.com', // Собственный адрес сайта
-      admin_settings: { // можно задать настройки для использования(или нет) внутри приложения
-        min_title_value_length: 5, // минимальное кол-во символов для шортрида
-        min_longtext_value_length: 15, // минимальное кол-во символов для лонгрида
+      v: "1.0.0",                                           // версия приложения
+      ajaxUrl: 'https://domain-name.com/api.php',           // адрес API
+      homeUrl: 'https://domain-name.com',                   // Собственный адрес сайта
+      admin_settings: {                                     // можно задать настройки для использования(или нет) внутри приложения
+        min_title_value_length: 5,                          // минимальное кол-во символов для шортрида
+        min_longtext_value_length: 15,                      // минимальное кол-во символов для лонгрида
       },
-      user: { // Данные авторизованного пользователя
+      user: {                                               // Данные авторизованного пользователя
         data: {
-          ID: "2", // ID 1 должен занимать мастер-аккаунт
+          ID: "2",                                          // ID 1 должен занимать мастер-аккаунт
           display_name: "username",
           user_email: "admin_email@gmail.com",
           user_login: "login",
           user_nicename: "nicename",
-          user_pass: "$P$BRHvXQSJz8xothKuRr18IYB3Wvx7as/", // зашифрованный MD5 пароль
-          user_registered: "2021-12-15 17:34:11", // дата регистрации
+          user_pass: "$P$BRHvXQSJz8xothKuRr18IYB3Wvx7as/",  // зашифрованный MD5 пароль
+          user_registered: "2021-12-15 17:34:11",           // дата регистрации
           user_status: "0",
-          user_url: "https://self-domain.com", // адрес текущего сайта
+          user_url: "https://self-domain.com",              // адрес текущего сайта
         }
       }
     }
